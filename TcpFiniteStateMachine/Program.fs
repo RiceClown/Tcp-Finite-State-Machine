@@ -51,18 +51,21 @@ let transitionTable =
         (CLOSE_WAIT, APP_CLOSE, LAST_ACK);
         (LAST_ACK, RCV_ACK, CLOSED);
     ]
-
+//функция обработки события и смены состояния
 let processEvent currentState event =
-    match List.tryFind (fun (s, e, nextState) -> s = currentState && e = event) transitionTable with
-    | Some (_, _, nextState) -> nextState
-    | None -> failwith "Unexpected event"
+    match List.tryFind (fun (s, e, nextState) -> s = currentState && e = event) transitionTable with //поиск соотвествий в таблице
+    | Some (_, _, nextState) -> nextState // найдено -> смена состояния
+    | None -> failwith "Unexpected event" // не найдено -> исключение
 
+//Функция обработки всех событий
 let processEvents initialState events =
-    List.fold (fun state event -> processEvent state event) initialState events
+    List.fold (fun state event -> processEvent state event) initialState events //обрабатываем события следующим образом (f ( f ( f event 1) event2) event3)
 
+//Функция вывода результата
 let printResult result =
     printfn "Final State: %A" result
 
+//Функция мапинга и валидации введенных событий
 let eventFromString s =
     match s with
     | "APP_PASSIVE_OPEN" -> APP_PASSIVE_OPEN
@@ -75,12 +78,16 @@ let eventFromString s =
     | "RCV_SYN_ACK" -> RCV_SYN_ACK
     | "RCV_FIN" -> RCV_FIN
     | "RCV_FIN_ACK" -> RCV_FIN_ACK
-    | _ -> failwith "Invalid event"
+    | _ -> failwith "Invalid event" // исключение при неизвестном событии
 
+//Функция считывания данных из консоли
 let readEvents () =
     printf "Enter events (comma-separated): "
-    System.Console.ReadLine().Split([|','|], StringSplitOptions.RemoveEmptyEntries) |> Array.map (fun s -> s.Trim() |> eventFromString) |> List.ofArray
+    System.Console.ReadLine().Split([|','|], StringSplitOptions.RemoveEmptyEntries) //чтение строки с последующим разделением
+    |> Array.map (fun s -> s.Trim() |> eventFromString)                             //форматирование и мапинг
+    |> List.ofArray                                                                 //приведение к списку
 
+//главный метод
 let main () =
     try
         let initialState = CLOSED
