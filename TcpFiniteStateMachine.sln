@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TcpFiniteStateMachine", "TcpFiniteStateMachine\TcpFiniteStateMachine.fsproj", "{A7EBEFD9-1CDB-4706-9532-84ACC483448A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7EBEFD9-1CDB-4706-9532-84ACC483448A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7EBEFD9-1CDB-4706-9532-84ACC483448A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7EBEFD9-1CDB-4706-9532-84ACC483448A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7EBEFD9-1CDB-4706-9532-84ACC483448A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FA43D08-28BA-471E-A606-0E9F40EED189}
+	EndGlobalSection
+EndGlobal
